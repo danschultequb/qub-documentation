@@ -1,0 +1,1026 @@
+<!DOCTYPE html>
+<!-- saved from url=(0087)https://code.visualstudio.com/docs/extensions/example-word-count#_update-the-status-bar -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <script type="text/javascript" async="" src="./Visual Studio Code Example - Word Count Extension_files/linkid.js.download"></script><script type="text/javascript" src="./Visual Studio Code Example - Word Count Extension_files/getpx.php"></script><script id="twitter-wjs" src="./Visual Studio Code Example - Word Count Extension_files/widgets.js.download"></script><script type="text/javascript" async="" src="./Visual Studio Code Example - Word Count Extension_files/c2076-pixel.js.download"></script><script src="./Visual Studio Code Example - Word Count Extension_files/521469064676353" async=""></script><script async="" src="./Visual Studio Code Example - Word Count Extension_files/fbevents.js.download"></script><script async="" src="./Visual Studio Code Example - Word Count Extension_files/gtm.js.download"></script><script async="" src="./Visual Studio Code Example - Word Count Extension_files/analytics.js.download"></script><script>
+    var isProduction = window.location.hostname === 'code.visualstudio.com';
+    var isHomePage = window.location.pathname === '/';
+    var isNodejsLanding = window.location.pathname === '/nodejs';
+    var isDocsFirstStart = window.location.href.toLowerCase().split('.com')[1] === '/docs?start=true';
+    
+    function downloadExperiment(experimentId) {
+        
+        // Copied code from Google analytics
+        // except for experimentId variable
+        function utmx_section(){}function utmx(){}(function(){var
+        k=experimentId,d=document,l=d.location,c=d.cookie;
+        if(l.search.indexOf('utm_expid='+k)>0)return;
+        function f(n){if(c){var i=c.indexOf(n+'=');if(i>-1){var j=c.
+        indexOf(';',i);return escape(c.substring(i+n.length+1,j<0?c.
+        length:j))}}}var x=f('__utmx'),xx=f('__utmxx'),h=l.hash;d.write(
+        '<sc'+'ript src="'+'http'+(l.protocol=='https:'?'s://ssl':
+        '://www')+'.google-analytics.com/ga_exp.js?'+'utmxkey='+k+
+        '&utmx='+(x?x:'')+'&utmxx='+(xx?xx:'')+'&utmxtime='+new Date().
+        valueOf()+(h?'&utmxhash='+escape(h.substr(1)):'')+
+        '" type="text/javascript" charset="utf-8"><\/sc'+'ript>')})();
+    
+    }
+    
+    // Remember to create if statements in lower script as well. 
+    if (isProduction) {
+        // Don't remove. This is the example to follow
+        // if (isHomePage) {
+           // downloadExperiment('101350005-35');
+        // }
+        if (isDocsFirstStart) {
+           // downloadExperiment('101350005-29');
+        }
+        if (isNodejsLanding) {
+            downloadExperiment('101350005-36');
+        }
+    }
+    </script>
+    <script>
+    // this second script tag matters! Do not remove.
+    if (isProduction) {
+        // Don't remove. This is the example to follow.
+        // if (isHomePage) {
+           // utmx('url','A/B');
+        // }
+        if (isNodejsLanding) {
+           utmx('url','A/B'); 
+        }
+    }
+    
+    </script>    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="google-site-verification" content="cn5-gurGUvjtlzniBhOIPjfKHzuAplh_R9Ju9tuL0DM">
+    <!-- Twitter and Facebook OpenGraph Metadata-->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@code">
+    	<meta name="description" content="The Word Count extension (plug-in) example takes you deeper into the Visual Studio Code extensibility model, showing how to interact with the editor and manage extension and VS Code resources.">
+	<meta name="keywords" content="">
+    <meta name="ms.prod" content="vs-code">
+    <meta name="ms.TOCTitle" content="Example-Word Count">
+    <meta name="ms.ContentId" content="4D9132DC-CDDB-4E07-B2DD-9A7E168BE384">
+    <meta name="ms.date" content="8/9/2017">
+    <meta name="ms.topic" content="article">
+	<!-- Twitter and Facebook OpenGraph Metadata-->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta property="og:url" content="http://code.visualstudio.com/docs/extensions/example-word-count">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Visual Studio Code Example - Word Count Extension">
+    <meta property="og:description" content="The Word Count extension (plug-in) example takes you deeper into the Visual Studio Code extensibility model, showing how to interact with the editor and manage extension and VS Code resources.">
+    
+    <meta property="og:image" content="http://code.visualstudio.com/opengraphimg/opengraph-docs.png">
+    
+
+    <link rel="shortcut icon" href="https://code.visualstudio.com/images/favicon.ico">
+    <title>Visual Studio Code Example - Word Count Extension</title>
+
+    <!-- TOFIX Not sure why bower isn't pulling this in-->
+    <link rel="stylesheet" type="text/css" href="./Visual Studio Code Example - Word Count Extension_files/bootstrap.min.css">
+    <!-- inject:css -->
+    <link rel="stylesheet" href="./Visual Studio Code Example - Word Count Extension_files/vendor.css">
+    <link rel="stylesheet" href="./Visual Studio Code Example - Word Count Extension_files/main.css">
+    <!-- endinject -->
+    <!--Google Analytics-->
+    <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    </script>
+    <!-- End Google Analytics -->
+    <script>
+    var appInsights=window.appInsights||function(config){
+        function r(config){t[config]=function(){var i=arguments;t.queue.push(function(){t[config].apply(t,i)})}}var t={config:config},u=document,e=window,o="script",s=u.createElement(o),i,f;for(s.src=config.url||"//az416426.vo.msecnd.net/scripts/a/ai.0.js",u.getElementsByTagName(o)[0].parentNode.appendChild(s),t.cookie=u.cookie,t.queue=[],i=["Event","Exception","Metric","PageView","Trace"];i.length;)r("track"+i.pop());return r("setAuthenticatedUserContext"),r("clearAuthenticatedUserContext"),config.disableExceptionTracking||(i="onerror",r("_"+i),f=e[i],e[i]=function(config,r,u,e,o){var s=f&&f(config,r,u,e,o);return s!==!0&&t["_"+i](config,r,u,e,o),s}),t
+    }({
+        instrumentationKey:"f18193ef-b93a-4f73-b640-e2ddd40507ae"
+    });
+    
+    window.appInsights=appInsights;
+    appInsights.trackPageView();
+    </script><script src="./Visual Studio Code Example - Word Count Extension_files/ai.0.js.download"></script>
+    
+    <!-- Google Tag Manager -->
+    <noscript>&lt;iframe src="//www.googletagmanager.com/ns.html?id=GTM-NK783Z"
+    height="0" width="0" style="display:none;visibility:hidden"&gt;&lt;/iframe&gt;</noscript>
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    '//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-NK783Z');</script>
+    <!-- End Google Tag Manager -->
+    
+    <!-- Google Code for Remarketing Tag -->
+    <script>
+    /* <![CDATA[ */
+    var google_conversion_id = 925780327;
+    var google_conversion_label = "NYYICOuc5moQ55K5uQM";
+    var google_custom_params = window.google_tag_params;
+    var google_remarketing_only = true;
+    /* ]]> */
+    </script> 
+    <script src="./Visual Studio Code Example - Word Count Extension_files/conversion.js.download"></script><script type="text/javascript" charset="utf-8" async="" src="./Visual Studio Code Example - Word Count Extension_files/button.3ccb64e61d4c01fae12cd2b0ed9b2bab.js.download"></script></head><body class="win"><iframe name="google_conversion_frame" title="Google conversion frame" width="300" height="13" src="./Visual Studio Code Example - Word Count Extension_files/saved_resource.html" frameborder="0" marginwidth="0" marginheight="0" vspace="0" hspace="0" allowtransparency="true" scrolling="no"></iframe>
+    
+    <noscript>
+        &lt;div style="display:inline;"&gt;
+            &lt;img height="1" width="1" style="border-style:none;" alt="" src="//googleads.g.doubleclick.net/pagead/viewthroughconversion/925780327/?value=1.00&amp;amp;currency_code=USD&amp;amp;label=NYYICOuc5moQ55K5uQM&amp;amp;guid=ON&amp;amp;script=0" /&gt;
+        &lt;/div&gt;
+    </noscript>
+    <!-- End Google Code for Remarketing Tag -->
+    
+    <!-- Facebook Pixel Code -->
+    <script>
+    !function(f,b,e,v,n,t,s){
+        if(f.fbq)
+            return;
+        n = f.fbq = function() {
+            n.callMethod ? n.callMethod.apply(n,arguments) : n.queue.push(arguments)
+        };
+        if(!f._fbq)
+            f._fbq=n;
+        n.push=n; 
+        n.loaded=!0;
+        n.version='2.0';
+        n.queue=[];
+        t=b.createElement(e);
+        t.async=!0;
+        t.src=v;s=b.getElementsByTagName(e)[0];
+        s.parentNode.insertBefore(t,s)
+    }(window, document,'script','https://connect.facebook.net/en_US/fbevents.js');
+        fbq('init', '521469064676353');
+        fbq('track', 'PageView');
+    </script>
+    <noscript>&lt;img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=521469064676353&amp;ev=PageView&amp;noscript=1" /&gt;</noscript>
+    <!-- DO NOT MODIFY -->
+    <!-- End Facebook Pixel Code -->
+    
+    <!-- Kenshoo tracking code-->
+    
+    <script>
+    
+    // Required if we cannot load the tracking code twice on the download confirmation page. 
+    //if (window.document.pathname.contains('/docs/?dv')) {
+     //   window.ICX = window.ICX || {};
+     //   window.ICX.pageAction = "6509";
+    //}
+    
+    window.ICX = window.ICX || {};
+    ICX.domain_id = "7193";
+    
+    window.loadKenshooTrackingCode = function () {
+        var p, s, id;
+        id = '2076';
+        p = document.createElement('script');
+        p.type = 'text/javascript';
+        p.async = true;
+        p.src = document.location.protocol + '//c'+ id +'.ic-live.com/pixel-js/c'+ id +'-pixel.js';
+        s = document.getElementsByTagName('script')[0];
+        s.parentNode.insertBefore(p, s);
+    };
+    
+    if (!window.ICX.pageAction) {
+        window.loadKenshooTrackingCode && window.loadKenshooTrackingCode();
+    }
+    </script>
+    <!-- End Kenshoo tracking code-->    
+    <link rel="alternate" type="application/atom+xml" title="RSS Feed for code.visualstudio.com" href="https://code.visualstudio.com/feed.xml">
+
+
+    <!-- WEDCS -->
+    <script type="text/javascript">
+        // Defaults for varAutoFirePV and varCustomerTracking seem to work. varClickTracking doesn't, so called explicitly.
+        var varClickTracking = 1;
+        var Route = "20052";
+        document.write("<script type='text/javascript' src='" + (window.location.protocol) + "//c.microsoft.com/ms.js'" + "'><\/script>");
+    </script><script type="text/javascript" src="./Visual Studio Code Example - Word Count Extension_files/ms.js.download" '=""></script>
+    <!-- End WEDCS -->
+    <div itemscope="" itemtype="http://schema.org/SoftwareApplication">
+            <a role="button" id="skip-to-content" class="link-button" href="https://code.visualstudio.com/docs/extensions/example-word-count#main-content">Skip to content<i>&nbsp;</i><span class="glyphicon glyphicon-menu-down"></span></a>
+            <div class="navbar navbar-inverse ">
+                <nav role="navigation">
+                    <div class="container">
+                        <div class="nav navbar-header">
+                            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse" aria-label="Expand and Collapse Menu">
+                                    <span class="icon-bar"></span>
+                                    <span class="icon-bar"></span>
+                                    <span class="icon-bar"></span>
+                                </button>
+                            <a class="navbar-brand" href="https://code.visualstudio.com/"><span itemprop="name">Visual Studio Code</span></a>
+                        </div>
+                        <div class="navbar-collapse collapse">
+                            <ul class="nav navbar-nav navbar-left">
+                                <li class="active"><a id="nav-docs" href="https://code.visualstudio.com/docs">Docs</a></li>
+                                <li><a id="nav-updates" href="https://code.visualstudio.com/updates">Updates</a></li>
+                                <li><a id="nav-blogs" href="https://code.visualstudio.com/blogs">Blog</a></li>
+                                <li><a id="nav-community" href="https://code.visualstudio.com/community">Community</a></li>
+                                <li><a href="https://marketplace.visualstudio.com/VSCode" target="_blank" id="nav-extensions">Extensions</a></li>
+                                <li><a id="nav-faqs" href="https://code.visualstudio.com/docs/FAQ">FAQ</a></li>
+                                <li class="visible-xs"><a href="https://www.github.com/Microsoft/vscode" target="_blank">GitHub Project</a></li>
+                                <li class="search visible-xs"><a href="https://code.visualstudio.com/Search">Search</a></li>
+                            </ul>
+            
+                            <ul class="nav navbar-nav navbar-right">
+                                <li>
+                                    <a href="https://code.visualstudio.com/Search" title="Search" class="btn search-btn" id="nav-search">
+                                        <img class="search-icon" src="./Visual Studio Code Example - Word Count Extension_files/search.svg" width="16px" height="16px" alt="Search">
+                                        <img class="search-icon-inverted" src="./Visual Studio Code Example - Word Count Extension_files/search_dark.svg" width="16px" height="16px" alt="Search">
+                                    </a>
+                                </li>
+                                <li class="search">
+                                    <form class="nav-search search-form">
+                                        <div class="input-group">
+                                            <input type="text" name="q" class="search-box form-control" placeholder="Search Docs">
+                                            <span class="input-group-btn">
+                                                <button tabindex="0" class="btn" type="submit" aria-label="Search">
+                                                        <img class="search-icon" src="./Visual Studio Code Example - Word Count Extension_files/search.svg" width="16px" height="16px" alt="Search">
+                                                        <img class="search-icon-inverted" src="./Visual Studio Code Example - Word Count Extension_files/search_dark.svg" width="16px" height="16px" alt="Search">
+                                                </button>
+                                            </span>
+                                        </div>
+                                    </form>                    </li>
+                                <!-- this was hiden in the home and download page, keeping it for now -->
+                                <li><a itemprop="downloadUrl" class="link-button" href="https://code.visualstudio.com/Download" id="nav-download">
+                                    <img class="download-icon" src="./Visual Studio Code Example - Word Count Extension_files/download.svg" width="16px" height="16px" alt="Download VS Code">
+                                    <img class="download-icon-inverted" src="./Visual Studio Code Example - Word Count Extension_files/download-black.svg" width="16px" height="16px" alt="Download VS Code">
+                                    <span class="hidden-sm">Download</span>
+                                </a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </nav>
+            </div>            <div class="updates-banner  ">
+                <div class="container">
+                    <p class="message"><a href="https://code.visualstudio.com/updates" id="banner-link-updates">Version <span itemprop="softwareVersion">1.15</span></a> is now available! Read about the new features and fixes in July.</p>
+                </div>
+                <div tabindex="0" role="button" title="Dismiss this update" class="dismiss-btn" id="banner-dismiss-btn"><span class="sr-only">Dismiss this update</span><span aria-hidden="true" class="glyph-icon"></span></div>
+            </div>        <div role="main" id="main-content">
+			
+
+<div class="container body-content docs">
+    <div class="row">
+        <div class="col-md-2">
+            <nav id="docs-navbar" class="docs-nav visible-md visible-lg affix">
+            	<ul class="nav" id="main-nav">
+            		<li><a class="docs-home" href="https://code.visualstudio.com/docs">Overview</a></li>
+            		
+            			
+            		
+            			
+            				<li class="panel collapsed">
+            					<a class="area" href="https://code.visualstudio.com/docs/extensions/example-word-count#setup-articles" data-parent="#main-nav" data-toggle="collapse">Setup</a>
+            					<ul id="setup-articles" class="collapse ">
+            					
+            						<li><a href="https://code.visualstudio.com/docs/setup/setup-overview">Overview</a></li>
+            					
+            						<li><a href="https://code.visualstudio.com/docs/setup/linux">Linux</a></li>
+            					
+            						<li><a href="https://code.visualstudio.com/docs/setup/mac">Mac</a></li>
+            					
+            						<li><a href="https://code.visualstudio.com/docs/setup/windows">Windows</a></li>
+            					
+            						<li><a href="https://code.visualstudio.com/docs/setup/network">Network</a></li>
+            					
+            						<li><a href="https://code.visualstudio.com/docs/setup/additional-components">Additional Components</a></li>
+            					
+            					</ul>
+            				</li>
+            			
+            		
+            			
+            				<li class="panel collapsed">
+            					<a class="area" href="https://code.visualstudio.com/docs/extensions/example-word-count#getstarted-articles" data-parent="#main-nav" data-toggle="collapse">Get Started</a>
+            					<ul id="getstarted-articles" class="collapse ">
+            					
+            						<li><a href="https://code.visualstudio.com/docs/getstarted/introvideos">Intro Videos</a></li>
+            					
+            						<li><a href="https://code.visualstudio.com/docs/getstarted/userinterface">User Interface</a></li>
+            					
+            						<li><a href="https://code.visualstudio.com/docs/getstarted/themes">Themes</a></li>
+            					
+            						<li><a href="https://code.visualstudio.com/docs/getstarted/settings">Settings</a></li>
+            					
+            						<li><a href="https://code.visualstudio.com/docs/getstarted/keybindings">Key Bindings</a></li>
+            					
+            						<li><a href="https://code.visualstudio.com/docs/getstarted/locales">Display Language</a></li>
+            					
+            					</ul>
+            				</li>
+            			
+            		
+            			
+            				<li class="panel collapsed">
+            					<a class="area" href="https://code.visualstudio.com/docs/extensions/example-word-count#editor-articles" data-parent="#main-nav" data-toggle="collapse">User Guide</a>
+            					<ul id="editor-articles" class="collapse ">
+            					
+            						<li><a href="https://code.visualstudio.com/docs/editor/codebasics">Basic Editing</a></li>
+            					
+            						<li><a href="https://code.visualstudio.com/docs/editor/extension-gallery">Extension Marketplace</a></li>
+            					
+            						<li><a href="https://code.visualstudio.com/docs/editor/intellisense">IntelliSense</a></li>
+            					
+            						<li><a href="https://code.visualstudio.com/docs/editor/editingevolved">Code Navigation</a></li>
+            					
+            						<li><a href="https://code.visualstudio.com/docs/editor/debugging">Debugging</a></li>
+            					
+            						<li><a href="https://code.visualstudio.com/docs/editor/versioncontrol">Version Control</a></li>
+            					
+            						<li><a href="https://code.visualstudio.com/docs/editor/integrated-terminal">Integrated Terminal</a></li>
+            					
+            						<li><a href="https://code.visualstudio.com/docs/editor/tasks">Tasks</a></li>
+            					
+            						<li><a href="https://code.visualstudio.com/docs/editor/userdefinedsnippets">Creating your own Snippets</a></li>
+            					
+            						<li><a href="https://code.visualstudio.com/docs/editor/emmet">Emmet</a></li>
+            					
+            						<li><a href="https://code.visualstudio.com/docs/editor/command-line">Command Line</a></li>
+            					
+            						<li><a href="https://code.visualstudio.com/docs/editor/accessibility">Accessibility</a></li>
+            					
+            					</ul>
+            				</li>
+            			
+            		
+            			
+            				<li class="panel collapsed">
+            					<a class="area" href="https://code.visualstudio.com/docs/extensions/example-word-count#languages-articles" data-parent="#main-nav" data-toggle="collapse">Languages</a>
+            					<ul id="languages-articles" class="collapse ">
+            					
+            						<li><a href="https://code.visualstudio.com/docs/languages/overview">Overview</a></li>
+            					
+            						<li><a href="https://code.visualstudio.com/docs/languages/javascript">JavaScript</a></li>
+            					
+            						<li><a href="https://code.visualstudio.com/docs/languages/json">JSON</a></li>
+            					
+            						<li><a href="https://code.visualstudio.com/docs/languages/html">HTML</a></li>
+            					
+            						<li><a href="https://code.visualstudio.com/docs/languages/css">CSS, Sass and Less</a></li>
+            					
+            						<li><a href="https://code.visualstudio.com/docs/languages/typescript">TypeScript</a></li>
+            					
+            						<li><a href="https://code.visualstudio.com/docs/languages/markdown">Markdown</a></li>
+            					
+            						<li><a href="https://code.visualstudio.com/docs/languages/cpp">C++</a></li>
+            					
+            						<li><a href="https://code.visualstudio.com/docs/languages/php">PHP</a></li>
+            					
+            						<li><a href="https://code.visualstudio.com/docs/languages/python">Python</a></li>
+            					
+            						<li><a href="https://code.visualstudio.com/docs/languages/go">Go</a></li>
+            					
+            						<li><a href="https://code.visualstudio.com/docs/languages/dockerfile">Dockerfile</a></li>
+            					
+            						<li><a href="https://code.visualstudio.com/docs/languages/tsql">T-SQL</a></li>
+            					
+            						<li><a href="https://code.visualstudio.com/docs/languages/csharp">C#</a></li>
+            					
+            					</ul>
+            				</li>
+            			
+            		
+            			
+            				<li class="panel collapsed">
+            					<a class="area" href="https://code.visualstudio.com/docs/extensions/example-word-count#nodejs-articles" data-parent="#main-nav" data-toggle="collapse">Node.js / JavaScript</a>
+            					<ul id="nodejs-articles" class="collapse ">
+            					
+            						<li><a href="https://code.visualstudio.com/docs/nodejs/nodejs-tutorial">Node.js Tutorial</a></li>
+            					
+            						<li><a href="https://code.visualstudio.com/docs/nodejs/nodejs-debugging">Node.js Debugging</a></li>
+            					
+            						<li><a href="https://code.visualstudio.com/docs/nodejs/nodejs-deployment">Node.js Deployment</a></li>
+            					
+            						<li><a href="https://code.visualstudio.com/docs/nodejs/reactjs-tutorial">React Tutorial</a></li>
+            					
+            						<li><a href="https://code.visualstudio.com/docs/nodejs/angular-tutorial">Angular Tutorial</a></li>
+            					
+            						<li><a href="https://code.visualstudio.com/docs/nodejs/extensions">Extensions</a></li>
+            					
+            					</ul>
+            				</li>
+            			
+            		
+            			
+            				<li class="panel active expanded">
+            					<a class="area" href="https://code.visualstudio.com/docs/extensions/example-word-count#extensions-articles" data-parent="#main-nav" data-toggle="collapse">Extension Authoring</a>
+            					<ul id="extensions-articles" class="collapse in">
+            					
+            						<li><a href="https://code.visualstudio.com/docs/extensions/overview">Overview</a></li>
+            					
+            						<li><a href="https://code.visualstudio.com/docs/extensions/yocode">Extension Generator</a></li>
+            					
+            						<li><a href="https://code.visualstudio.com/docs/extensions/example-hello-world">Example-Hello World</a></li>
+            					
+            						<li class="active"><a href="https://code.visualstudio.com/docs/extensions/example-word-count">Example-Word Count</a></li>
+            					
+            						<li><a href="https://code.visualstudio.com/docs/extensions/example-language-server">Example-Language Server</a></li>
+            					
+            						<li><a href="https://code.visualstudio.com/docs/extensions/example-debuggers">Example-Debuggers</a></li>
+            					
+            						<li><a href="https://code.visualstudio.com/docs/extensions/themes-snippets-colorizers">Themes, Snippets and Colorizers</a></li>
+            					
+            						<li><a href="https://code.visualstudio.com/docs/extensions/samples">Additional Examples</a></li>
+            					
+            						<li><a href="https://code.visualstudio.com/docs/extensions/debugging-extensions">Running and Debugging Extensions</a></li>
+            					
+            						<li><a href="https://code.visualstudio.com/docs/extensions/publish-extension">Publishing Extensions</a></li>
+            					
+            						<li><a href="https://code.visualstudio.com/docs/extensions/testing-extensions">Testing Extensions</a></li>
+            					
+            					</ul>
+            				</li>
+            			
+            		
+            			
+            				<li class="panel collapsed">
+            					<a class="area" href="https://code.visualstudio.com/docs/extensions/example-word-count#extensionapi-articles" data-parent="#main-nav" data-toggle="collapse">Extensibility Reference</a>
+            					<ul id="extensionapi-articles" class="collapse ">
+            					
+            						<li><a href="https://code.visualstudio.com/docs/extensionAPI/overview">Overview</a></li>
+            					
+            						<li><a href="https://code.visualstudio.com/docs/extensionAPI/patterns-and-principles">Principles and Patterns</a></li>
+            					
+            						<li><a href="https://code.visualstudio.com/docs/extensionAPI/language-support">Language Extension Guidelines</a></li>
+            					
+            						<li><a href="https://code.visualstudio.com/docs/extensionAPI/extension-manifest">Extension Manifest</a></li>
+            					
+            						<li><a href="https://code.visualstudio.com/docs/extensionAPI/extension-points">Contribution Points</a></li>
+            					
+            						<li><a href="https://code.visualstudio.com/docs/extensionAPI/activation-events">Activation Events</a></li>
+            					
+            						<li><a href="https://code.visualstudio.com/docs/extensionAPI/vscode-api">vscode namespace API</a></li>
+            					
+            						<li><a href="https://code.visualstudio.com/docs/extensionAPI/vscode-api-commands">Complex Commands</a></li>
+            					
+            						<li><a href="https://code.visualstudio.com/docs/extensionAPI/api-debugging">Debugging API</a></li>
+            					
+            						<li><a href="https://code.visualstudio.com/docs/extensionAPI/api-scm">Source Control API</a></li>
+            					
+            						<li><a href="https://code.visualstudio.com/docs/extensionAPI/api-markdown">Markdown Extension API</a></li>
+            					
+            					</ul>
+            				</li>
+            			
+            		
+            			
+            		
+            			
+            				<li class="panel collapsed">
+            					<a class="area" href="https://code.visualstudio.com/docs/extensions/example-word-count#other-articles" data-parent="#main-nav" data-toggle="collapse">Other</a>
+            					<ul id="other-articles" class="collapse ">
+            					
+            						<li><a href="https://code.visualstudio.com/docs/other/dotnet">.NET Core</a></li>
+            					
+            						<li><a href="https://code.visualstudio.com/docs/other/unity">Unity</a></li>
+            					
+            						<li><a href="https://code.visualstudio.com/docs/other/office">Office</a></li>
+            					
+            					</ul>
+            				</li>
+            			
+            		
+            	</ul>
+            </nav>
+            <nav id="small-nav" class="docs-nav hidden-md hidden-lg">
+            	<h4>Topics</h4>
+            	<select id="small-nav-dropdown">
+            		<option value="/docs">Overview</option>
+            		
+            			
+            		
+            			
+            				<optgroup label="Setup">
+            				
+            					<option value="/docs/setup/setup-overview">Overview</option>
+            				
+            					<option value="/docs/setup/linux">Linux</option>
+            				
+            					<option value="/docs/setup/mac">Mac</option>
+            				
+            					<option value="/docs/setup/windows">Windows</option>
+            				
+            					<option value="/docs/setup/network">Network</option>
+            				
+            					<option value="/docs/setup/additional-components">Additional Components</option>
+            				
+            				</optgroup>
+            			
+            		
+            			
+            				<optgroup label="Get Started">
+            				
+            					<option value="/docs/getstarted/introvideos">Intro Videos</option>
+            				
+            					<option value="/docs/getstarted/userinterface">User Interface</option>
+            				
+            					<option value="/docs/getstarted/themes">Themes</option>
+            				
+            					<option value="/docs/getstarted/settings">Settings</option>
+            				
+            					<option value="/docs/getstarted/keybindings">Key Bindings</option>
+            				
+            					<option value="/docs/getstarted/locales">Display Language</option>
+            				
+            				</optgroup>
+            			
+            		
+            			
+            				<optgroup label="User Guide">
+            				
+            					<option value="/docs/editor/codebasics">Basic Editing</option>
+            				
+            					<option value="/docs/editor/extension-gallery">Extension Marketplace</option>
+            				
+            					<option value="/docs/editor/intellisense">IntelliSense</option>
+            				
+            					<option value="/docs/editor/editingevolved">Code Navigation</option>
+            				
+            					<option value="/docs/editor/debugging">Debugging</option>
+            				
+            					<option value="/docs/editor/versioncontrol">Version Control</option>
+            				
+            					<option value="/docs/editor/integrated-terminal">Integrated Terminal</option>
+            				
+            					<option value="/docs/editor/tasks">Tasks</option>
+            				
+            					<option value="/docs/editor/userdefinedsnippets">Creating your own Snippets</option>
+            				
+            					<option value="/docs/editor/emmet">Emmet</option>
+            				
+            					<option value="/docs/editor/command-line">Command Line</option>
+            				
+            					<option value="/docs/editor/accessibility">Accessibility</option>
+            				
+            				</optgroup>
+            			
+            		
+            			
+            				<optgroup label="Languages">
+            				
+            					<option value="/docs/languages/overview">Overview</option>
+            				
+            					<option value="/docs/languages/javascript">JavaScript</option>
+            				
+            					<option value="/docs/languages/json">JSON</option>
+            				
+            					<option value="/docs/languages/html">HTML</option>
+            				
+            					<option value="/docs/languages/css">CSS, Sass and Less</option>
+            				
+            					<option value="/docs/languages/typescript">TypeScript</option>
+            				
+            					<option value="/docs/languages/markdown">Markdown</option>
+            				
+            					<option value="/docs/languages/cpp">C++</option>
+            				
+            					<option value="/docs/languages/php">PHP</option>
+            				
+            					<option value="/docs/languages/python">Python</option>
+            				
+            					<option value="/docs/languages/go">Go</option>
+            				
+            					<option value="/docs/languages/dockerfile">Dockerfile</option>
+            				
+            					<option value="/docs/languages/tsql">T-SQL</option>
+            				
+            					<option value="/docs/languages/csharp">C#</option>
+            				
+            				</optgroup>
+            			
+            		
+            			
+            				<optgroup label="Node.js / JavaScript">
+            				
+            					<option value="/docs/nodejs/nodejs-tutorial">Node.js Tutorial</option>
+            				
+            					<option value="/docs/nodejs/nodejs-debugging">Node.js Debugging</option>
+            				
+            					<option value="/docs/nodejs/nodejs-deployment">Node.js Deployment</option>
+            				
+            					<option value="/docs/nodejs/reactjs-tutorial">React Tutorial</option>
+            				
+            					<option value="/docs/nodejs/angular-tutorial">Angular Tutorial</option>
+            				
+            					<option value="/docs/nodejs/extensions">Extensions</option>
+            				
+            				</optgroup>
+            			
+            		
+            			
+            				<optgroup label="Extension Authoring">
+            				
+            					<option value="/docs/extensions/overview">Overview</option>
+            				
+            					<option value="/docs/extensions/yocode">Extension Generator</option>
+            				
+            					<option value="/docs/extensions/example-hello-world">Example-Hello World</option>
+            				
+            					<option value="/docs/extensions/example-word-count" selected="">Example-Word Count</option>
+            				
+            					<option value="/docs/extensions/example-language-server">Example-Language Server</option>
+            				
+            					<option value="/docs/extensions/example-debuggers">Example-Debuggers</option>
+            				
+            					<option value="/docs/extensions/themes-snippets-colorizers">Themes, Snippets and Colorizers</option>
+            				
+            					<option value="/docs/extensions/samples">Additional Examples</option>
+            				
+            					<option value="/docs/extensions/debugging-extensions">Running and Debugging Extensions</option>
+            				
+            					<option value="/docs/extensions/publish-extension">Publishing Extensions</option>
+            				
+            					<option value="/docs/extensions/testing-extensions">Testing Extensions</option>
+            				
+            				</optgroup>
+            			
+            		
+            			
+            				<optgroup label="Extensibility Reference">
+            				
+            					<option value="/docs/extensionAPI/overview">Overview</option>
+            				
+            					<option value="/docs/extensionAPI/patterns-and-principles">Principles and Patterns</option>
+            				
+            					<option value="/docs/extensionAPI/language-support">Language Extension Guidelines</option>
+            				
+            					<option value="/docs/extensionAPI/extension-manifest">Extension Manifest</option>
+            				
+            					<option value="/docs/extensionAPI/extension-points">Contribution Points</option>
+            				
+            					<option value="/docs/extensionAPI/activation-events">Activation Events</option>
+            				
+            					<option value="/docs/extensionAPI/vscode-api">vscode namespace API</option>
+            				
+            					<option value="/docs/extensionAPI/vscode-api-commands">Complex Commands</option>
+            				
+            					<option value="/docs/extensionAPI/api-debugging">Debugging API</option>
+            				
+            					<option value="/docs/extensionAPI/api-scm">Source Control API</option>
+            				
+            					<option value="/docs/extensionAPI/api-markdown">Markdown Extension API</option>
+            				
+            				</optgroup>
+            			
+            		
+            			
+            		
+            			
+            				<optgroup label="Other">
+            				
+            					<option value="/docs/other/dotnet">.NET Core</option>
+            				
+            					<option value="/docs/other/unity">Unity</option>
+            				
+            					<option value="/docs/other/office">Office</option>
+            				
+            				</optgroup>
+            			
+            		
+            	</select>
+            </nav>		</div>
+		<div class="col-sm-9 col-md-8 body">
+			<div class="edit-github pull-right">
+				<a href="https://github.com/Microsoft/vscode-docs/blob/master/docs/extensions/example-word-count.md" tabindex="-1">
+					<button type="button" class="btn btn-default"><span class="glyphicon glyphicon-pencil"></span><i>&nbsp;</i><span class="hidden-xs">Edit</span></button>
+				</a>
+			</div>
+			<h1>Example - Word Count</h1>
+<p>This document assumes you have read <a href="https://code.visualstudio.com/docs/extensions/example-hello-world">Your First Extension</a> which covers the basics of VS Code extensibility.</p>
+<p>Word Count is an end to end tutorial to show you how to create an extension to aid in Markdown authoring.  Before we get into how all of this works, let's have a quick demo of the core features you will be building so you know what to expect.</p>
+<p>Whenever a <code>Markdown</code> file is edited, a status bar message is added.  The message includes the current word count and updates as you type and move from file to file:</p>
+<p><img src="./Visual Studio Code Example - Word Count Extension_files/example-word-count_wordcountevent2.gif" alt="Word Count on Status Bar"></p>
+<blockquote>
+<p><strong>Tip:</strong> The finished sample is available from <a href="https://github.com/microsoft/vscode-wordcount" class="external-link" target="_blank">this GitHub repository</a> should you have any issues.</p>
+</blockquote>
+<h2 id="_overview" data-needslink="_overview">Overview<a class="hash-link hidden" href="https://code.visualstudio.com/docs/extensions/example-word-count#_overview">#</a></h2>
+<p>This example has three sections which will take you through a set of related concepts:</p>
+<ol>
+<li><a href="https://code.visualstudio.com/docs/extensions/example-word-count#_update-the-status-bar">Update the Status Bar</a> - display custom text in the VS Code <code>Status Bar</code></li>
+<li><a href="https://code.visualstudio.com/docs/extensions/example-word-count#_subscribing-to-events">Subscribing to Events</a> - updating the <code>Status Bar</code> based on editor events</li>
+<li><a href="https://code.visualstudio.com/docs/extensions/example-word-count#_disposing-extension-resources">Disposing Extension Resources</a> - release resources like event subscriptions or UI handles</li>
+</ol>
+<p>First make sure you have the latest VS Code extension generator installed then run it:</p>
+<pre><code class="bash">npm install -g yo generator-code
+yo code
+</code></pre>
+<p>This will open up the extension generator - we will base this example on the TypeScript <code>New Extension</code> option. For now, fill in the fields the same way you see them completed in the image below (using 'WordCount' as the extension name and your own name as the publisher).</p>
+<p><img src="./Visual Studio Code Example - Word Count Extension_files/example-word-count_yo1.png" alt="Yo Code Word Count Example Output"></p>
+<p>You can now open VS Code as described in the generator output:</p>
+<pre><code class="bash"><span class="hljs-built_in">cd</span> WordCount
+code .
+</code></pre>
+<h2 id="_run-the-extension" data-needslink="_run-the-extension">Run the Extension<a class="hash-link hidden" href="https://code.visualstudio.com/docs/extensions/example-word-count#_run-the-extension">#</a></h2>
+<p>Before we go on, we can run the extension to make sure everything works as expected by pressing <span class="dynamic-keybinding keybinding win" data-osx="F5" data-win="F5" data-linux="F5" title="OSX: F5, Linux: F5">F5</span>. As you saw in the previous "Hello World" walkthrough, VS Code opens another window (the <strong>[Extension Development Host]</strong> window) in which your extension will be loaded. You should find the "Hello World" command in the Command Palette (press <span class="dynamic-keybinding keybinding win" data-osx="⇧⌘P" data-win="Ctrl+Shift+P" data-linux="Ctrl+Shift+P" title="OSX: ⇧⌘P, Linux: Ctrl+Shift+P">Ctrl+Shift+P</span>) and when you select it, you will see an information box at the top of the window saying "Hello World".</p>
+<p>Now that you have confirmed that the extension is running properly, you can keep the extension development window open if you like. To test out any changes that you make to your extension, you can either press <span class="dynamic-keybinding keybinding win" data-osx="F5" data-win="F5" data-linux="F5" title="OSX: F5, Linux: F5">F5</span> again in the development window or reload the extension development window by pressing <span class="keybinding">Ctrl+R</span> (Mac: <span class="keybinding">Cmd+R</span>).</p>
+<h2 id="_update-the-status-bar" data-needslink="_update-the-status-bar">Update the Status Bar<a class="hash-link hidden" href="https://code.visualstudio.com/docs/extensions/example-word-count#_update-the-status-bar">#</a></h2>
+<p>Replace the contents of the generated <code>extension.ts</code> file with the code shown below. It declares and instantiates a <code>WordCounter</code> class which can count words and shows them in the VS Code Status Bar.  The "Hello Word" command will call <code>updateWordCount</code> when invoked.</p>
+<pre><code class="javascript"><span class="hljs-comment">// The module 'vscode' contains the VS Code extensibility API</span>
+<span class="hljs-comment">// Import the necessary extensibility types to use in your code below</span>
+<span class="hljs-keyword">import</span> {window, commands, Disposable, ExtensionContext, StatusBarAlignment, StatusBarItem, TextDocument} <span class="hljs-keyword">from</span> <span class="hljs-string">'vscode'</span>;
+
+<span class="hljs-comment">// This method is called when your extension is activated. Activation is</span>
+<span class="hljs-comment">// controlled by the activation events defined in package.json.</span>
+<span class="hljs-keyword">export</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">activate</span>(<span class="hljs-params">context: ExtensionContext</span>) </span>{
+
+    <span class="hljs-comment">// Use the console to output diagnostic information (console.log) and errors (console.error).</span>
+    <span class="hljs-comment">// This line of code will only be executed once when your extension is activated.</span>
+    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'Congratulations, your extension "WordCount" is now active!'</span>);
+
+    <span class="hljs-comment">// create a new word counter</span>
+    <span class="hljs-keyword">let</span> wordCounter = <span class="hljs-keyword">new</span> WordCounter();
+
+    <span class="hljs-keyword">let</span> disposable = commands.registerCommand(<span class="hljs-string">'extension.sayHello'</span>, () =&gt; {
+        wordCounter.updateWordCount();
+    });
+
+    <span class="hljs-comment">// Add to a list of disposables which are disposed when this extension is deactivated.</span>
+    context.subscriptions.push(wordCounter);
+    context.subscriptions.push(disposable);
+}
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">WordCounter</span> </span>{
+
+    private _statusBarItem: StatusBarItem;
+
+    public updateWordCount() {
+
+        <span class="hljs-comment">// Create as needed</span>
+        <span class="hljs-keyword">if</span> (!<span class="hljs-keyword">this</span>._statusBarItem) {
+            <span class="hljs-keyword">this</span>._statusBarItem = <span class="hljs-built_in">window</span>.createStatusBarItem(StatusBarAlignment.Left);
+        }
+
+        <span class="hljs-comment">// Get the current text editor</span>
+        <span class="hljs-keyword">let</span> editor = <span class="hljs-built_in">window</span>.activeTextEditor;
+        <span class="hljs-keyword">if</span> (!editor) {
+            <span class="hljs-keyword">this</span>._statusBarItem.hide();
+            <span class="hljs-keyword">return</span>;
+        }
+
+        <span class="hljs-keyword">let</span> doc = editor.document;
+
+        <span class="hljs-comment">// Only update status if an Markdown file</span>
+        <span class="hljs-keyword">if</span> (doc.languageId === <span class="hljs-string">"markdown"</span>) {
+            <span class="hljs-keyword">let</span> wordCount = <span class="hljs-keyword">this</span>._getWordCount(doc);
+
+            <span class="hljs-comment">// Update the status bar</span>
+            <span class="hljs-keyword">this</span>._statusBarItem.text = wordCount !== <span class="hljs-number">1</span> ? <span class="hljs-string">`<span class="hljs-subst">${wordCount}</span> Words`</span> : <span class="hljs-string">'1 Word'</span>;
+            <span class="hljs-keyword">this</span>._statusBarItem.show();
+        } <span class="hljs-keyword">else</span> { 
+            <span class="hljs-keyword">this</span>._statusBarItem.hide();
+        }
+    }
+
+    public _getWordCount(doc: TextDocument): number {
+
+        <span class="hljs-keyword">let</span> docContent = doc.getText();
+
+        <span class="hljs-comment">// Parse out unwanted whitespace so the split is accurate</span>
+        docContent = docContent.replace(<span class="hljs-regexp">/(&lt; ([^&gt;]+)&lt;)/g</span>, <span class="hljs-string">''</span>).replace(<span class="hljs-regexp">/\s+/g</span>, <span class="hljs-string">' '</span>);
+        docContent = docContent.replace(<span class="hljs-regexp">/^\s\s*/</span>, <span class="hljs-string">''</span>).replace(<span class="hljs-regexp">/\s\s*$/</span>, <span class="hljs-string">''</span>);
+        <span class="hljs-keyword">let</span> wordCount = <span class="hljs-number">0</span>;
+        <span class="hljs-keyword">if</span> (docContent != <span class="hljs-string">""</span>) {
+            wordCount = docContent.split(<span class="hljs-string">" "</span>).length;
+        }
+
+        <span class="hljs-keyword">return</span> wordCount;
+    }
+
+    dispose() {
+        <span class="hljs-keyword">this</span>._statusBarItem.dispose();
+    }
+}
+</code></pre>
+<p>Now let's try our updates to the extension.</p>
+<p>We have the compilation of the TypeScript file set on a watch (in the extension's .vscode\tasks.json file) so there is no need to re-build.  Hit <span class="keybinding">Ctrl+R</span> in the <strong>[Extension Development Host]</strong> window where your code is running and the extension will reload (you can also just <span class="dynamic-keybinding keybinding win" data-osx="F5" data-win="F5" data-linux="F5" title="OSX: F5, Linux: F5">F5</span> from your primary development window).  We still need to activate the code in the same way as before with the "Hello World" command.  Assuming you are in a Markdown file, your Status Bar will display the word count.</p>
+<p><img src="./Visual Studio Code Example - Word Count Extension_files/example-word-count_wordcount2.png" alt="Working Word Count"></p>
+<p>This is a good start but it would be cooler if the count updated as your file changed.</p>
+<h2 id="_subscribing-to-events" data-needslink="_subscribing-to-events">Subscribing to Events<a class="hash-link hidden" href="https://code.visualstudio.com/docs/extensions/example-word-count#_subscribing-to-events">#</a></h2>
+<p>Let's hook your helper class up to a set of events.</p>
+<ul>
+<li><code>onDidChangeTextEditorSelection</code> - Event is raised as the cursor position changes</li>
+<li><code>onDidChangeActiveTextEditor</code> - Event is raised as the active editor changes.</li>
+</ul>
+<p>To do this, we'll add a new class into the <code>extension.ts</code> file. It will set up subscriptions to those events and ask the <code>WordCounter</code> to update the word count. Also note how this class manages the subscription as Disposables and how it stops listing when being disposed itself.</p>
+<p>Add the <code>WordCounterController</code> as shown below to the bottom of the <code>extension.ts</code> file.</p>
+<pre><code class="javascript"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">WordCounterController</span> </span>{
+
+    private _wordCounter: WordCounter;
+    private _disposable: Disposable;
+
+    constructor(wordCounter: WordCounter) {
+        <span class="hljs-keyword">this</span>._wordCounter = wordCounter;
+
+        <span class="hljs-comment">// subscribe to selection change and editor activation events</span>
+        <span class="hljs-keyword">let</span> subscriptions: Disposable[] = [];
+        <span class="hljs-built_in">window</span>.onDidChangeTextEditorSelection(<span class="hljs-keyword">this</span>._onEvent, <span class="hljs-keyword">this</span>, subscriptions);
+        <span class="hljs-built_in">window</span>.onDidChangeActiveTextEditor(<span class="hljs-keyword">this</span>._onEvent, <span class="hljs-keyword">this</span>, subscriptions);
+
+        <span class="hljs-comment">// update the counter for the current file</span>
+        <span class="hljs-keyword">this</span>._wordCounter.updateWordCount();
+
+        <span class="hljs-comment">// create a combined disposable from both event subscriptions</span>
+        <span class="hljs-keyword">this</span>._disposable = Disposable.from(...subscriptions);
+    }
+
+    dispose() {
+        <span class="hljs-keyword">this</span>._disposable.dispose();
+    }
+
+    private _onEvent() {
+        <span class="hljs-keyword">this</span>._wordCounter.updateWordCount();
+    }
+}
+</code></pre>
+<p>We no longer want the Word Count extension to be loaded when a command is invoked but instead be available for each <em>Markdown</em> file.</p>
+<p>First, replace the body of the <code>activate</code> function with this:</p>
+<pre><code class="javascript"><span class="hljs-comment">// Use the console to output diagnostic information (console.log) and errors (console.error).</span>
+<span class="hljs-comment">// This line of code will only be executed once when your extension is activated.</span>
+<span class="hljs-built_in">console</span>.log(<span class="hljs-string">'Congratulations, your extension "WordCount" is now active!'</span>);
+
+<span class="hljs-comment">// create a new word counter</span>
+<span class="hljs-keyword">let</span> wordCounter = <span class="hljs-keyword">new</span> WordCounter();
+<span class="hljs-keyword">let</span> controller = <span class="hljs-keyword">new</span> WordCounterController(wordCounter);
+
+<span class="hljs-comment">// Add to a list of disposables which are disposed when this extension is deactivated.</span>
+context.subscriptions.push(controller);
+context.subscriptions.push(wordCounter);
+</code></pre>
+<p>Second, we must make sure the extension is activated upon the opening of a <code>Markdown</code> file.  To do this, we'll need to modify the <code>package.json</code> file.  Previously the extension was activated via the <code>extension.sayHello</code> command which we no longer need and so we can delete the entire <code>contributes</code> attribute from <code>package.json</code>:</p>
+<pre><code class="json">    <span class="hljs-string">"contributes"</span>: {
+        "<span class="hljs-attribute">commands</span>":
+            <span class="hljs-value">[{
+                "<span class="hljs-attribute">command</span>": <span class="hljs-value"><span class="hljs-string">"extension.sayHello"</span></span>,
+                "<span class="hljs-attribute">title</span>": <span class="hljs-value"><span class="hljs-string">"Hello World"</span>
+            </span>}
+        ]
+    </span>},
+</code></pre>
+<p>Now change your extension so that it is activated upon the opening of a <em>Markdown</em> file by updating the <code>activationEvents</code> attribute to this:</p>
+<pre><code class="json">    <span class="hljs-string">"activationEvents"</span>: [
+        <span class="hljs-string">"onLanguage:markdown"</span>
+    ]
+</code></pre>
+<p>The  <a href="https://code.visualstudio.com/docs/extensionAPI/activation-events#_activationeventsonlanguage"><code>onLanguage:${language}</code></a> event takes the language id, in this case "markdown", and will be raised whenever a file of that language is opened.</p>
+<p>Run the extension by either doing a window reload <span class="keybinding">Ctrl+R</span> or with <span class="dynamic-keybinding keybinding win" data-osx="F5" data-win="F5" data-linux="F5" title="OSX: F5, Linux: F5">F5</span> and then start editing a Markdown file.  You should now should have a live updating Word Count.</p>
+<p><img src="./Visual Studio Code Example - Word Count Extension_files/example-word-count_wordcountevent2.gif" alt="Word Count Updating on Events"></p>
+<p>If you set a breakpoint on the <code>activate</code> function, you'll notice that it is only called once when the first Markdown file is opened.  The <code>WordCountController</code> constructor runs and subscribes to the editor events so that the <code>updateWordCount</code> function is called as Markdown files are opened and their text changes.</p>
+<h2 id="_customizing-the-status-bar" data-needslink="_customizing-the-status-bar">Customizing the Status Bar<a class="hash-link hidden" href="https://code.visualstudio.com/docs/extensions/example-word-count#_customizing-the-status-bar">#</a></h2>
+<p>We've seen how you can display formatted text on the Status Bar.  VS Code allows you to customize your Status Bar additions even further with color, icons, tooltips and more.  Using IntelliSense, you can see the various <code>StatusBarItem</code> fields.  Another great resource for learning about the VS Code extensibility APIs is the <code>vscode.d.ts</code> type declaration file included in your generated Extension project.  Open <code>node_modules\vscode\vscode.d.ts</code> in the editor, you'll see the complete VS Code extensibility API with comments.</p>
+<p><img src="./Visual Studio Code Example - Word Count Extension_files/example-word-count_vscode-d-ts.png" alt="vscode-d-ts file"></p>
+<p>Replace the StatusBarItem update code with:</p>
+<pre><code class="javascript">    <span class="hljs-comment">// Update the status bar</span>
+    <span class="hljs-keyword">this</span>._statusBarItem.text = wordCount !== <span class="hljs-number">1</span> ? <span class="hljs-string">`$(pencil) <span class="hljs-subst">${wordCount}</span> Words`</span> : <span class="hljs-string">'$(pencil) 1 Word'</span>;
+    <span class="hljs-keyword">this</span>._statusBarItem.show();
+</code></pre>
+<p>to display a <a href="https://octicons.github.com/" class="external-link" target="_blank">GitHub Octicon</a> <code>pencil</code> icon to the left of the calculated word count.</p>
+<p><img src="./Visual Studio Code Example - Word Count Extension_files/example-word-count_wordcount-pencil.png" alt="Word Count with pencil icon"></p>
+<h2 id="_disposing-extension-resources" data-needslink="_disposing-extension-resources">Disposing Extension Resources<a class="hash-link hidden" href="https://code.visualstudio.com/docs/extensions/example-word-count#_disposing-extension-resources">#</a></h2>
+<p>Now we'll take a deeper look at how extensions should handle VS Code resources through <a href="https://code.visualstudio.com/docs/extensionAPI/patterns-and-principles#_disposables">Disposables</a>.</p>
+<p>When an extension is activated, it is passed an <code>ExtensionContext</code> object which has a <code>subscriptions</code> collection of Disposables. Extensions can add their Disposable objects to this collection and VS Code will dispose of those objects when the extension is deactivated.</p>
+<p>Many VS Code APIs which create workspace or UI objects (e.g. <code>registerCommand</code>) return a Disposable and extensions can remove these elements from VS Code by calling their dispose method directly.</p>
+<p>Events are another example where <code>onDid*</code> event subscriber methods return a Disposable.  Extensions unsubscribe to an event by disposing the event's Disposable.  In our example, <code>WordCountController</code> handles the event subscription Disposables directly by keeping its own Disposable collection which it cleans up on deactivation.</p>
+<pre><code class="javascript">    <span class="hljs-comment">// subscribe to selection change and editor activation events</span>
+    <span class="hljs-keyword">let</span> subscriptions: Disposable[] = [];
+    <span class="hljs-built_in">window</span>.onDidChangeTextEditorSelection(<span class="hljs-keyword">this</span>._onEvent, <span class="hljs-keyword">this</span>, subscriptions);
+    <span class="hljs-built_in">window</span>.onDidChangeActiveTextEditor(<span class="hljs-keyword">this</span>._onEvent, <span class="hljs-keyword">this</span>, subscriptions);
+
+    <span class="hljs-comment">// create a combined disposable from both event subscriptions</span>
+    <span class="hljs-keyword">this</span>._disposable = Disposable.from(...subscriptions);
+</code></pre>
+<h2 id="_installing-your-extension-locally" data-needslink="_installing-your-extension-locally">Installing your Extension Locally<a class="hash-link hidden" href="https://code.visualstudio.com/docs/extensions/example-word-count#_installing-your-extension-locally">#</a></h2>
+<p>So far, the extension you have written only runs in a special instance of VS Code, the Extension Development Host instance. To make your extension available to all VS Code instances, copy the extension folder contents to a new folder under <a href="https://code.visualstudio.com/docs/extensions/yocode#_your-extensions-folder">your <code>.vscode/extensions</code> folder</a>.</p>
+<h2 id="_publishing-your-extension" data-needslink="_publishing-your-extension">Publishing your Extension<a class="hash-link hidden" href="https://code.visualstudio.com/docs/extensions/example-word-count#_publishing-your-extension">#</a></h2>
+<p>Read about how to <a href="https://code.visualstudio.com/docs/extensions/publish-extension">Share an Extension</a>.</p>
+<h2 id="_next-steps" data-needslink="_next-steps">Next Steps<a class="hash-link hidden" href="https://code.visualstudio.com/docs/extensions/example-word-count#_next-steps">#</a></h2>
+<p>Read on to find out about:</p>
+<ul>
+<li><a href="https://code.visualstudio.com/docs/extensions/yocode">Extension Generator</a> - Learn about other options in the Yo Code extension generator.</li>
+<li><a href="https://code.visualstudio.com/docs/extensionAPI/overview">Extension API</a> - Get an overview of the Extension API.</li>
+<li><a href="https://code.visualstudio.com/docs/extensions/publish-extension">Publishing Tool</a> - Learn how to publish an extension to the public Marketplace.</li>
+<li><a href="https://code.visualstudio.com/docs/extensionAPI/vscode-api#_window">Editor API</a> - Learn more about Text Documents, Text Editors and editing text.</li>
+<li><a href="https://code.visualstudio.com/docs/extensions/samples">Additional Extension Examples</a> - Take a look at our list of example extension projects.</li>
+</ul>
+
+			<div class="feedback"><div data-reactroot="" class="widget"><form><div class="buttons"><h3>Was this documentation helpful?</h3><br><button value="1"><!-- react-text: 7 -->Yes<!-- /react-text --><span class="sr-only"> , this page was helpful</span></button><button value="0"><!-- react-text: 10 -->No<!-- /react-text --><span class="sr-only"> , this page was not helpful</span></button></div></form></div></div>
+			
+			<div class="body-footer">Last updated on 8/9/2017</div>
+			
+		</div>
+        <div class="hidden-xs col-sm-3 col-md-2">
+            <nav id="docs-subnavbar" aria-label="On Page Navigation" class="affix">
+				<h4 tabindex="0"><span class="sr-only">In this article there are 9 sections</span><span aria-hidden="true">In this article</span></h4>
+                <ul class="nav">
+                	
+                		<li><a href="https://code.visualstudio.com/docs/extensions/example-word-count#_overview">Overview</a></li>
+                	
+                		<li><a href="https://code.visualstudio.com/docs/extensions/example-word-count#_run-the-extension">Run the Extension</a></li>
+                	
+                		<li class="active"><a href="https://code.visualstudio.com/docs/extensions/example-word-count#_update-the-status-bar">Update the Status Bar</a></li>
+                	
+                		<li><a href="https://code.visualstudio.com/docs/extensions/example-word-count#_subscribing-to-events">Subscribing to Events</a></li>
+                	
+                		<li><a href="https://code.visualstudio.com/docs/extensions/example-word-count#_customizing-the-status-bar">Customizing the Status Bar</a></li>
+                	
+                		<li><a href="https://code.visualstudio.com/docs/extensions/example-word-count#_disposing-extension-resources">Disposing Extension Resources</a></li>
+                	
+                		<li><a href="https://code.visualstudio.com/docs/extensions/example-word-count#_installing-your-extension-locally">Installing your Extension Locally</a></li>
+                	
+                		<li><a href="https://code.visualstudio.com/docs/extensions/example-word-count#_publishing-your-extension">Publishing your Extension</a></li>
+                	
+                		<li><a href="https://code.visualstudio.com/docs/extensions/example-word-count#_next-steps">Next Steps</a></li>
+                	
+                </ul>
+				<iframe id="twitter-widget-0" scrolling="no" frameborder="0" allowtransparency="true" class="twitter-share-button twitter-share-button-rendered twitter-tweet-button" title="Twitter Tweet Button" src="./Visual Studio Code Example - Word Count Extension_files/tweet_button.f8c8d971a6ac545cf416e3c1ad4bbc65.en.html" style="position: static; visibility: visible; width: 61px; height: 20px;"></iframe>
+				<div class="connect-widget"><ul data-reactroot="" class="connect-links"><li id="connect-rssfeed"><a href="https://code.visualstudio.com/feed.xml" target="_blank"><div class="image rssfeed"></div><!-- react-text: 5 -->Subscribe<!-- /react-text --></a></li><li id="connect-stack-overflow"><a href="https://stackoverflow.com/questions/tagged/vscode" target="_blank"><div class="image stackoverflow"></div><!-- react-text: 9 -->Ask questions<!-- /react-text --></a></li><li id="connect-twitter"><a href="https://go.microsoft.com/fwlink/?LinkID=533687" target="_blank"><div class="image twitterhandle"></div><!-- react-text: 13 -->Follow @code<!-- /react-text --></a></li><li id="connect-uservoice"><a href="https://go.microsoft.com/fwlink/?LinkID=533482" target="_blank"><div class="image uservoice"></div><!-- react-text: 17 -->Request features<!-- /react-text --></a></li><li id="connect-github"><a href="https://www.github.com/Microsoft/vscode/issues" target="_blank"><div class="image github"></div><!-- react-text: 21 -->Report issues<!-- /react-text --></a></li><li id="connect-youtube"><a href="https://www.youtube.com/channel/UCs5Y5_7XK8HLDX0SLNwkd3w" target="_blank"><div class="image youtube"></div><!-- react-text: 25 -->Watch videos<!-- /react-text --></a></li></ul></div>
+			</nav>
+        </div>
+	</div>
+</div>
+
+		</div>
+
+        <meta itemprop="applicationCategory" content="Text Editor">
+        <meta itemprop="screenshot" content="http://localhost:7000/home-screenshot-mac-lg.png">
+        <meta itemprop="datePublished" content="2016-04-14">
+        <meta itemprop="operatingSystem" content="Mac, Linux, Windows">
+    </div>
+    <footer role="contentinfo">
+        <div class="container">
+            <div class="row">
+                <div class="left col-md-7">
+                    <ul class="links">
+                        <li>
+                            <span class="message">Hello from Seattle.</span>
+                        </li>
+                        <li>
+                            <a href="https://code.visualstudio.com/docs/extensions/example-word-count" aria-hidden="true" onclick="followOnTwitter()" role="button" tabindex="0">Follow @code</a>
+                        </li>
+                        <li>
+                            <div class="github-star-button">
+                                <iframe title="GitHub star button" src="./Visual Studio Code Example - Word Count Extension_files/github-btn.html" frameborder="0" scrolling="0" width="130px" height="20px"></iframe>
+                            </div>
+                        </li>
+    
+                        <script>
+                            function followOnTwitter() {
+                                var windowFeatures = "location=yes,height=600,width=550,scrollbars=yes,status=yes";
+                                var originalReferer = "&original_referer=" + document.URL;
+                                var screenName = "&screen_name=code";
+                                var URL = "https://twitter.com/intent/follow?" + originalReferer + screenName;
+                                window.open(URL, "_blank", windowFeatures);
+                            }
+                        </script>
+    
+                        <script>
+                            window.twttr = (function (d, s, id) { var js, fjs = d.getElementsByTagName(s)[0], t = window.twttr || {}; if (d.getElementById(id)) return t; js = d.createElement(s); js.id = id; js.src = "https://platform.twitter.com/widgets.js"; fjs.parentNode.insertBefore(js, fjs); t._e = []; t.ready = function (f) { t._e.push(f); }; return t; }(document, "script", "twitter-wjs"));
+                        </script>
+    
+                    </ul>
+                </div>
+                <div class="right col-md-5">
+                    <ul class="links">
+                        <li><a id="footer-support-link" href="https://support.microsoft.com/en-us/getsupport?wf=0&amp;tenant=ClassicCommercial&amp;oaspworkflow=start_1.0.0.0&amp;locale=en-us&amp;supportregion=en-us&amp;pesid=16064&amp;ccsid=636196895839595242" target="_blank">Support</a></li>
+                        <li><a id="footer-privacy-link" href="https://www.microsoft.com/privacystatement/en-us/core/default.aspx" target="_blank">Privacy</a></li>
+                        <li><a id="footer-terms-link" href="https://www.microsoft.com/en-us/legal/intellectualproperty/copyright/default.aspx" target="_blank">Terms of Use</a></li>
+                        <li><a id="footer-license-link" href="https://code.visualstudio.com/License">License</a></li>
+                    </ul>
+                    <div class="copyright">
+                        <a id="footer-microsoft-link" class="logo" href="https://www.microsoft.com/">
+                            <img class="microsoft-logo" src="./Visual Studio Code Example - Word Count Extension_files/microsoft-logo.png" height="20" alt="Microsoft homepage">
+                            <img class="microsoft-logo-inverted" src="./Visual Studio Code Example - Word Count Extension_files/microsoft-logo-inverted.png" height="20" alt="Microsoft homepage">
+                        </a>
+                        <span>© 2017 <span itemprop="publisher" itemscope="" itemtype="https://schema.org/Organization">
+    <span itemprop="name">Microsoft</span></span>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>    <!-- inject:js -->
+    <script src="./Visual Studio Code Example - Word Count Extension_files/vendor.js.download"></script>
+    <script src="./Visual Studio Code Example - Word Count Extension_files/main.js.download"></script>
+    <!-- endinject -->
+    
+    <script type="application/ld+json">
+        {
+            "@context" : "http://schema.org",
+            "@type" : "Product",
+            "name" : "Visual Studio Code",
+            "logo": "https://code.visualstudio.com/Content/images/vscode.ico",
+            "url" : "https://code.visualstudio.com",
+            "potentialAction": {
+              "@type": "SearchAction",
+              "target": "https://code.visualstudio.com/Search?q={search_term_string}",
+              "query-input": "required name=search_term_string"
+            },
+            "sameAs" : [
+            "https://en.wikipedia.org/wiki/Visual_Studio_Code",
+            "https://www.facebook.com/visualstudio",
+            "https://twitter.com/code",
+            "http://blogs.msdn.com/b/vscode"
+            ]
+        }
+    </script>
+
+
+</body></html>

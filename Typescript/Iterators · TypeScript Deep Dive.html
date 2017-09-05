@@ -1,0 +1,1952 @@
+<!DOCTYPE html>
+<!-- saved from url=(0058)https://basarat.gitbooks.io/typescript/docs/iterators.html -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        
+        
+        <title>Iterators · TypeScript Deep Dive</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.2">
+        <meta name="author" content="Basarat Ali Syed">
+        
+        
+    
+    <link rel="stylesheet" href="./Iterators · TypeScript Deep Dive_files/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="./Iterators · TypeScript Deep Dive_files/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="./Iterators · TypeScript Deep Dive_files/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="./Iterators · TypeScript Deep Dive_files/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="./Iterators · TypeScript Deep Dive_files/website(1).css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="https://basarat.gitbooks.io/typescript/gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="https://basarat.gitbooks.io/typescript/gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="https://basarat.gitbooks.io/typescript/docs/template-strings.html">
+    
+    
+    <link rel="prev" href="https://basarat.gitbooks.io/typescript/docs/for...of.html">
+    
+
+    </head>
+    <body>
+        
+<div class="book without-animation with-summary font-size-2 font-family-1">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search">
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+    
+        
+        <li>
+            <a href="https://www.gitbook.com/book/basarat/typescript" target="_blank" class="custom-link">TypeScript Deep Dive</a>
+        </li>
+    
+    
+
+    
+    <li class="divider"></li>
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../">
+            
+                <a href="https://basarat.gitbooks.io/typescript/">
+            
+                    
+                    Introduction
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="getting-started.html">
+            
+                <a href="https://basarat.gitbooks.io/typescript/docs/getting-started.html">
+            
+                    
+                    Getting Started
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.1" data-path="why-typescript.html">
+            
+                <a href="https://basarat.gitbooks.io/typescript/docs/why-typescript.html">
+            
+                    
+                    Why TypeScript
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="javascript/recap.html">
+            
+                <a href="https://basarat.gitbooks.io/typescript/docs/javascript/recap.html">
+            
+                    
+                    JavaScript
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.1" data-path="javascript/awful.html">
+            
+                <a href="https://basarat.gitbooks.io/typescript/docs/javascript/awful.html">
+            
+                    
+                    Awful
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.2" data-path="javascript/closure.html">
+            
+                <a href="https://basarat.gitbooks.io/typescript/docs/javascript/closure.html">
+            
+                    
+                    Closure
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" data-path="future-javascript.html">
+            
+                <a href="https://basarat.gitbooks.io/typescript/docs/future-javascript.html">
+            
+                    
+                    Future JavaScript Now
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.4.1" data-path="classes.html">
+            
+                <a href="https://basarat.gitbooks.io/typescript/docs/classes.html">
+            
+                    
+                    Classes
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.4.1.1" data-path="classes-emit.html">
+            
+                <a href="https://basarat.gitbooks.io/typescript/docs/classes-emit.html">
+            
+                    
+                    Classes Emit
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.1.2" data-path="classes-super.html">
+            
+                <a href="https://basarat.gitbooks.io/typescript/docs/classes-super.html">
+            
+                    
+                    Classes Super
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.1.3" data-path="classes-extensibility-wip.md">
+            
+                <span>
+            
+                    
+                    Classes Extensibility
+            
+                
+            
+
+            
+        </span></li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.2" data-path="arrow-functions.html">
+            
+                <a href="https://basarat.gitbooks.io/typescript/docs/arrow-functions.html">
+            
+                    
+                    Arrow Functions
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.3" data-path="rest-parameters.html">
+            
+                <a href="https://basarat.gitbooks.io/typescript/docs/rest-parameters.html">
+            
+                    
+                    Rest Parameters
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.4" data-path="let.html">
+            
+                <a href="https://basarat.gitbooks.io/typescript/docs/let.html">
+            
+                    
+                    let
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.5" data-path="const.html">
+            
+                <a href="https://basarat.gitbooks.io/typescript/docs/const.html">
+            
+                    
+                    const
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.6" data-path="destructuring.html">
+            
+                <a href="https://basarat.gitbooks.io/typescript/docs/destructuring.html">
+            
+                    
+                    Destructuring
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.7" data-path="spread-operator.html">
+            
+                <a href="https://basarat.gitbooks.io/typescript/docs/spread-operator.html">
+            
+                    
+                    Spread Operator
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.8" data-path="for...of.html">
+            
+                <a href="https://basarat.gitbooks.io/typescript/docs/for...of.html">
+            
+                    
+                    for...of
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.4.9" data-path="iterators.html">
+            
+                <a href="https://basarat.gitbooks.io/typescript/docs/iterators.html">
+            
+                    
+                    Iterators
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.10" data-path="template-strings.html">
+            
+                <a href="https://basarat.gitbooks.io/typescript/docs/template-strings.html">
+            
+                    
+                    Template Strings
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.11" data-path="promise.html">
+            
+                <a href="https://basarat.gitbooks.io/typescript/docs/promise.html">
+            
+                    
+                    Promise
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.12" data-path="generators.html">
+            
+                <a href="https://basarat.gitbooks.io/typescript/docs/generators.html">
+            
+                    
+                    Generators
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.13" data-path="async-await.html">
+            
+                <a href="https://basarat.gitbooks.io/typescript/docs/async-await.html">
+            
+                    
+                    Async Await
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" data-path="project/project.html">
+            
+                <a href="https://basarat.gitbooks.io/typescript/docs/project/project.html">
+            
+                    
+                    Project
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.5.1" data-path="project/compilation-context.html">
+            
+                <a href="https://basarat.gitbooks.io/typescript/docs/project/compilation-context.html">
+            
+                    
+                    Compilation Context
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.5.1.1" data-path="project/tsconfig.html">
+            
+                <a href="https://basarat.gitbooks.io/typescript/docs/project/tsconfig.html">
+            
+                    
+                    tsconfig.json
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.1.2" data-path="project/files.html">
+            
+                <a href="https://basarat.gitbooks.io/typescript/docs/project/files.html">
+            
+                    
+                    Which Files?
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.2" data-path="project/declarationspaces.html">
+            
+                <a href="https://basarat.gitbooks.io/typescript/docs/project/declarationspaces.html">
+            
+                    
+                    Declaration Spaces
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.3" data-path="project/modules.html">
+            
+                <a href="https://basarat.gitbooks.io/typescript/docs/project/modules.html">
+            
+                    
+                    Modules
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.5.3.1" data-path="project/external-modules.html">
+            
+                <a href="https://basarat.gitbooks.io/typescript/docs/project/external-modules.html">
+            
+                    
+                    File Module Details
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.3.2" data-path="project/globals.html">
+            
+                <a href="https://basarat.gitbooks.io/typescript/docs/project/globals.html">
+            
+                    
+                    globals.d.ts
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.4" data-path="project/namespaces.html">
+            
+                <a href="https://basarat.gitbooks.io/typescript/docs/project/namespaces.html">
+            
+                    
+                    Namespaces
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6" data-path="quick/nodejs.html">
+            
+                <a href="https://basarat.gitbooks.io/typescript/docs/quick/nodejs.html">
+            
+                    
+                    NodeJS QuickStart
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7" data-path="quick/browser.html">
+            
+                <a href="https://basarat.gitbooks.io/typescript/docs/quick/browser.html">
+            
+                    
+                    Browser QuickStart
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8" data-path="types/type-system.html">
+            
+                <a href="https://basarat.gitbooks.io/typescript/docs/types/type-system.html">
+            
+                    
+                    TypeScript's Type System
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.8.1" data-path="types/migrating.html">
+            
+                <a href="https://basarat.gitbooks.io/typescript/docs/types/migrating.html">
+            
+                    
+                    JS Migration Guide
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.2" data-path="types/@types.html">
+            
+                <a href="https://basarat.gitbooks.io/typescript/docs/types/@types.html">
+            
+                    
+                    @types
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.3" data-path="types/ambient/intro.html">
+            
+                <a href="https://basarat.gitbooks.io/typescript/docs/types/ambient/intro.html">
+            
+                    
+                    Ambient Declarations
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.8.3.1" data-path="types/ambient/d.ts.html">
+            
+                <a href="https://basarat.gitbooks.io/typescript/docs/types/ambient/d.ts.html">
+            
+                    
+                    Declaration Files
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.3.2" data-path="types/ambient/variables.html">
+            
+                <a href="https://basarat.gitbooks.io/typescript/docs/types/ambient/variables.html">
+            
+                    
+                    Variables
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.4" data-path="types/interfaces.html">
+            
+                <a href="https://basarat.gitbooks.io/typescript/docs/types/interfaces.html">
+            
+                    
+                    Interfaces
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.5" data-path="enums.html">
+            
+                <a href="https://basarat.gitbooks.io/typescript/docs/enums.html">
+            
+                    
+                    Enums
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.6" data-path="types/lib.d.ts.html">
+            
+                <a href="https://basarat.gitbooks.io/typescript/docs/types/lib.d.ts.html">
+            
+                    
+                    lib.d.ts
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.7" data-path="types/functions.html">
+            
+                <a href="https://basarat.gitbooks.io/typescript/docs/types/functions.html">
+            
+                    
+                    Functions
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.8" data-path="types/type-assertion.html">
+            
+                <a href="https://basarat.gitbooks.io/typescript/docs/types/type-assertion.html">
+            
+                    
+                    Type Assertion
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.9" data-path="types/freshness.html">
+            
+                <a href="https://basarat.gitbooks.io/typescript/docs/types/freshness.html">
+            
+                    
+                    Freshness
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.10" data-path="types/typeGuard.html">
+            
+                <a href="https://basarat.gitbooks.io/typescript/docs/types/typeGuard.html">
+            
+                    
+                    Type Guard
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.11" data-path="types/literal-types.html">
+            
+                <a href="https://basarat.gitbooks.io/typescript/docs/types/literal-types.html">
+            
+                    
+                    Literal Types
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.12" data-path="types/readonly.html">
+            
+                <a href="https://basarat.gitbooks.io/typescript/docs/types/readonly.html">
+            
+                    
+                    Readonly
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.13" data-path="types/generics.html">
+            
+                <a href="https://basarat.gitbooks.io/typescript/docs/types/generics.html">
+            
+                    
+                    Generics
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.14" data-path="types/type-inference.html">
+            
+                <a href="https://basarat.gitbooks.io/typescript/docs/types/type-inference.html">
+            
+                    
+                    Type Inference
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.15" data-path="types/type-compatibility.html">
+            
+                <a href="https://basarat.gitbooks.io/typescript/docs/types/type-compatibility.html">
+            
+                    
+                    Type Compatibility
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.16" data-path="types/never.html">
+            
+                <a href="https://basarat.gitbooks.io/typescript/docs/types/never.html">
+            
+                    
+                    Never Type
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.17" data-path="types/discriminated-unions.html">
+            
+                <a href="https://basarat.gitbooks.io/typescript/docs/types/discriminated-unions.html">
+            
+                    
+                    Discriminated Unions
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.18" data-path="types/index-signatures.html">
+            
+                <a href="https://basarat.gitbooks.io/typescript/docs/types/index-signatures.html">
+            
+                    
+                    Index Signatures
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.19" data-path="types/moving-types.html">
+            
+                <a href="https://basarat.gitbooks.io/typescript/docs/types/moving-types.html">
+            
+                    
+                    Moving Types
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.20" data-path="types/exceptions.html">
+            
+                <a href="https://basarat.gitbooks.io/typescript/docs/types/exceptions.html">
+            
+                    
+                    Exception Handling
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9" data-path="jsx/tsx.html">
+            
+                <a href="https://basarat.gitbooks.io/typescript/docs/jsx/tsx.html">
+            
+                    
+                    JSX
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10" data-path="options/intro.html">
+            
+                <a href="https://basarat.gitbooks.io/typescript/docs/options/intro.html">
+            
+                    
+                    Options
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.10.1" data-path="options/noImplicitAny.html">
+            
+                <a href="https://basarat.gitbooks.io/typescript/docs/options/noImplicitAny.html">
+            
+                    
+                    noImplicitAny
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.2" data-path="options/strictNullChecks.html">
+            
+                <a href="https://basarat.gitbooks.io/typescript/docs/options/strictNullChecks.html">
+            
+                    
+                    strictNullChecks
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11" data-path="tips/main.html">
+            
+                <a href="https://basarat.gitbooks.io/typescript/docs/tips/main.html">
+            
+                    
+                    TIPs
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.11.1" data-path="tips/quickObjectReturn.html">
+            
+                <a href="https://basarat.gitbooks.io/typescript/docs/tips/quickObjectReturn.html">
+            
+                    
+                    Quick Object Return
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11.2" data-path="tips/stringEnums.html">
+            
+                <a href="https://basarat.gitbooks.io/typescript/docs/tips/stringEnums.html">
+            
+                    
+                    String Based Enums
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11.3" data-path="tips/nominalTyping.html">
+            
+                <a href="https://basarat.gitbooks.io/typescript/docs/tips/nominalTyping.html">
+            
+                    
+                    Nominal Typing
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11.4" data-path="tips/statefulFunctions.html">
+            
+                <a href="https://basarat.gitbooks.io/typescript/docs/tips/statefulFunctions.html">
+            
+                    
+                    Stateful Functions
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11.5" data-path="tips/bind.html">
+            
+                <a href="https://basarat.gitbooks.io/typescript/docs/tips/bind.html">
+            
+                    
+                    Bind is Bad
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11.6" data-path="tips/currying.html">
+            
+                <a href="https://basarat.gitbooks.io/typescript/docs/tips/currying.html">
+            
+                    
+                    Currying
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11.7" data-path="tips/typeInstantiation.html">
+            
+                <a href="https://basarat.gitbooks.io/typescript/docs/tips/typeInstantiation.html">
+            
+                    
+                    Type Instantiation
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11.8" data-path="tips/lazyObjectLiteralInitialization.html">
+            
+                <a href="https://basarat.gitbooks.io/typescript/docs/tips/lazyObjectLiteralInitialization.html">
+            
+                    
+                    Lazy Object Literal Initialization
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11.9" data-path="tips/classesAreUseful.html">
+            
+                <a href="https://basarat.gitbooks.io/typescript/docs/tips/classesAreUseful.html">
+            
+                    
+                    Classes are Useful
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11.10" data-path="tips/defaultIsBad.html">
+            
+                <a href="https://basarat.gitbooks.io/typescript/docs/tips/defaultIsBad.html">
+            
+                    
+                    Avoid Export Default
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11.11" data-path="tips/propertySetters.html">
+            
+                <a href="https://basarat.gitbooks.io/typescript/docs/tips/propertySetters.html">
+            
+                    
+                    Limit Property Setters
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11.12" data-path="tips/null.html">
+            
+                <a href="https://basarat.gitbooks.io/typescript/docs/tips/null.html">
+            
+                    
+                    null is bad
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11.13" data-path="tips/outFile.html">
+            
+                <a href="https://basarat.gitbooks.io/typescript/docs/tips/outFile.html">
+            
+                    
+                    outFile caution
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11.14" data-path="tips/jquery.html">
+            
+                <a href="https://basarat.gitbooks.io/typescript/docs/tips/jquery.html">
+            
+                    
+                    JQuery tips
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11.15" data-path="tips/staticConstructor.html">
+            
+                <a href="https://basarat.gitbooks.io/typescript/docs/tips/staticConstructor.html">
+            
+                    
+                    static constructors
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11.16" data-path="tips/singleton.html">
+            
+                <a href="https://basarat.gitbooks.io/typescript/docs/tips/singleton.html">
+            
+                    
+                    singleton pattern
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11.17" data-path="tips/functionParameters.html">
+            
+                <a href="https://basarat.gitbooks.io/typescript/docs/tips/functionParameters.html">
+            
+                    
+                    Function parameters
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11.18" data-path="tips/truthy.html">
+            
+                <a href="https://basarat.gitbooks.io/typescript/docs/tips/truthy.html">
+            
+                    
+                    Truthy
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11.19" data-path="tips/build-toggles.html">
+            
+                <a href="https://basarat.gitbooks.io/typescript/docs/tips/build-toggles.html">
+            
+                    
+                    Build Toggles
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11.20" data-path="tips/barrel.html">
+            
+                <a href="https://basarat.gitbooks.io/typescript/docs/tips/barrel.html">
+            
+                    
+                    Barrel
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11.21" data-path="tips/create-arrays.html">
+            
+                <a href="https://basarat.gitbooks.io/typescript/docs/tips/create-arrays.html">
+            
+                    
+                    Create Arrays
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11.22" data-path="tips/promise-safety.html">
+            
+                <a href="https://basarat.gitbooks.io/typescript/docs/tips/promise-safety.html">
+            
+                    
+                    Promise Safety
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12" data-path="styleguide/styleguide.html">
+            
+                <a href="https://basarat.gitbooks.io/typescript/docs/styleguide/styleguide.html">
+            
+                    
+                    StyleGuide
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.13" data-path="errors/main.html">
+            
+                <a href="https://basarat.gitbooks.io/typescript/docs/errors/main.html">
+            
+                    
+                    Common Errors
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.14" data-path="compiler/overview.html">
+            
+                <a href="https://basarat.gitbooks.io/typescript/docs/compiler/overview.html">
+            
+                    
+                    TypeScript Compiler Internals
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.14.1" data-path="compiler/program.html">
+            
+                <a href="https://basarat.gitbooks.io/typescript/docs/compiler/program.html">
+            
+                    
+                    Program
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.14.2" data-path="compiler/ast.html">
+            
+                <a href="https://basarat.gitbooks.io/typescript/docs/compiler/ast.html">
+            
+                    
+                    AST
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.14.2.1" data-path="compiler/ast-tip-children.html">
+            
+                <a href="https://basarat.gitbooks.io/typescript/docs/compiler/ast-tip-children.html">
+            
+                    
+                    TIP: Visit Children
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.14.2.2" data-path="compiler/ast-tip-syntaxkind.html">
+            
+                <a href="https://basarat.gitbooks.io/typescript/docs/compiler/ast-tip-syntaxkind.html">
+            
+                    
+                    TIP: SyntaxKind enum
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.14.2.3" data-path="compiler/ast-trivia.html">
+            
+                <a href="https://basarat.gitbooks.io/typescript/docs/compiler/ast-trivia.html">
+            
+                    
+                    Trivia
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.14.3" data-path="compiler/scanner.html">
+            
+                <a href="https://basarat.gitbooks.io/typescript/docs/compiler/scanner.html">
+            
+                    
+                    Scanner
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.14.4" data-path="compiler/parser.html">
+            
+                <a href="https://basarat.gitbooks.io/typescript/docs/compiler/parser.html">
+            
+                    
+                    Parser
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.14.4.1" data-path="compiler/parser-functions.html">
+            
+                <a href="https://basarat.gitbooks.io/typescript/docs/compiler/parser-functions.html">
+            
+                    
+                    Parser Functions
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.14.5" data-path="compiler/binder.html">
+            
+                <a href="https://basarat.gitbooks.io/typescript/docs/compiler/binder.html">
+            
+                    
+                    Binder
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.14.5.1" data-path="compiler/binder-functions.html">
+            
+                <a href="https://basarat.gitbooks.io/typescript/docs/compiler/binder-functions.html">
+            
+                    
+                    Binder Functions
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.14.5.2" data-path="compiler/binder-declarations.html">
+            
+                <a href="https://basarat.gitbooks.io/typescript/docs/compiler/binder-declarations.html">
+            
+                    
+                    Binder Declarations
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.14.5.3" data-path="compiler/binder-container.html">
+            
+                <a href="https://basarat.gitbooks.io/typescript/docs/compiler/binder-container.html">
+            
+                    
+                    Binder Container
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.14.5.4" data-path="compiler/binder-symboltable.html">
+            
+                <a href="https://basarat.gitbooks.io/typescript/docs/compiler/binder-symboltable.html">
+            
+                    
+                    Binder SymbolTable
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.14.5.5" data-path="compiler/binder-diagnostics.html">
+            
+                <a href="https://basarat.gitbooks.io/typescript/docs/compiler/binder-diagnostics.html">
+            
+                    
+                    Binder Error Reporting
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.14.6" data-path="compiler/checker.html">
+            
+                <a href="https://basarat.gitbooks.io/typescript/docs/compiler/checker.html">
+            
+                    
+                    Checker
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.14.6.1" data-path="compiler/checker-global.html">
+            
+                <a href="https://basarat.gitbooks.io/typescript/docs/compiler/checker-global.html">
+            
+                    
+                    Checker Diagnostics
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.14.6.2" data-path="compiler/checker-diagnostics.html">
+            
+                <a href="https://basarat.gitbooks.io/typescript/docs/compiler/checker-diagnostics.html">
+            
+                    
+                    Checker Error Reporting
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.14.7" data-path="compiler/emitter.html">
+            
+                <a href="https://basarat.gitbooks.io/typescript/docs/compiler/emitter.html">
+            
+                    
+                    Emitter
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.14.7.1" data-path="compiler/emitter-functions.html">
+            
+                <a href="https://basarat.gitbooks.io/typescript/docs/compiler/emitter-functions.html">
+            
+                    
+                    Emitter Functions
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.14.7.2" data-path="compiler/emitter-sourcemaps.html">
+            
+                <a href="https://basarat.gitbooks.io/typescript/docs/compiler/emitter-sourcemaps.html">
+            
+                    
+                    Emitter SourceMaps
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.14.8" data-path="compiler/contributing.html">
+            
+                <a href="https://basarat.gitbooks.io/typescript/docs/compiler/contributing.html">
+            
+                    
+                    Contributing
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com/" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <a class="btn pull-left js-toolbar-action" aria-label="" href="https://basarat.gitbooks.io/typescript/docs/iterators.html#"><i class="fa fa-align-justify"></i></a><a class="btn pull-left js-toolbar-action" aria-label="" href="https://basarat.gitbooks.io/typescript/docs/iterators.html#"><i class="fa fa-edit"></i> Edit This Page</a><a class="btn pull-right js-toolbar-action" aria-label="GitHub" href="https://basarat.gitbooks.io/typescript/docs/iterators.html#"><i class="fa fa-github"></i></a><div class="dropdown pull-right js-toolbar-action"><a class="btn toggle-dropdown" aria-label="Share" href="https://basarat.gitbooks.io/typescript/docs/iterators.html#"><i class="fa fa-share-alt"></i></a><div class="dropdown-menu dropdown-left"><div class="dropdown-caret"><span class="caret-outer"></span><span class="caret-inner"></span></div><div class="buttons"><button class="button size-5 ">Facebook</button><button class="button size-5 ">Google+</button><button class="button size-5 ">Twitter</button><button class="button size-5 ">Weibo</button><button class="button size-5 ">Instapaper</button></div></div></div><a class="btn pull-right js-toolbar-action" aria-label="" href="https://basarat.gitbooks.io/typescript/docs/iterators.html#"><i class="fa fa-facebook"></i></a><a class="btn pull-right js-toolbar-action" aria-label="" href="https://basarat.gitbooks.io/typescript/docs/iterators.html#"><i class="fa fa-twitter"></i></a><div class="dropdown pull-left font-settings js-toolbar-action"><a class="btn toggle-dropdown" aria-label="Font Settings" href="https://basarat.gitbooks.io/typescript/docs/iterators.html#"><i class="fa fa-font"></i></a><div class="dropdown-menu dropdown-right"><div class="dropdown-caret"><span class="caret-outer"></span><span class="caret-inner"></span></div><div class="buttons"><button class="button size-2 font-reduce">A</button><button class="button size-2 font-enlarge">A</button></div><div class="buttons"><button class="button size-2 ">Serif</button><button class="button size-2 ">Sans</button></div><div class="buttons"><button class="button size-3 ">White</button><button class="button size-3 ">Sepia</button><button class="button size-3 ">Night</button></div></div></div><h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="https://basarat.gitbooks.io/typescript/">Iterators</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h3 id="iterators">Iterators</h3>
+<p class="comments-section">Iterator itself is not a TypeScript or ES6 feature, Iterator is a
+Behavioral Design Pattern common for Object oriented programming languages.
+It is, generally, an object which implements the following interface:<div class="comments-icon"><div class="marker">+</div></div></p>
+<pre><code class="lang-ts"><span class="hljs-keyword">interface</span> Iterator&lt;T&gt; {
+    next(value?: <span class="hljs-built_in">any</span>): IteratorResult&lt;T&gt;;
+    <span class="hljs-keyword">return</span>?(value?: <span class="hljs-built_in">any</span>): IteratorResult&lt;T&gt;;
+    <span class="hljs-keyword">throw</span>?(e?: <span class="hljs-built_in">any</span>): IteratorResult&lt;T&gt;;
+}
+</code></pre>
+<p class="comments-section">This interface allows to retrieve a value from some collection or sequence
+which belongs to the object.<div class="comments-icon"><div class="marker">+</div></div></p>
+<p class="comments-section">The <code>IteratorResult</code> is simply a <code>value</code>+<code>done</code> pair: <div class="comments-icon"><div class="marker">+</div></div></p>
+<pre><code class="lang-ts"><span class="hljs-keyword">interface</span> IteratorResult&lt;T&gt; {
+    done: <span class="hljs-built_in">boolean</span>;
+    value: T;
+}
+</code></pre>
+<p class="comments-section">Imagine that there's an object of some frame, which includes the list of
+components of which this frame consists. With Iterator interface it is possible
+to retrieve components from this frame object like below:<div class="comments-icon"><div class="marker">+</div></div></p>
+<pre><code class="lang-ts"><span class="hljs-meta">'use strict'</span>;
+
+<span class="hljs-keyword">class</span> Component {
+  <span class="hljs-keyword">constructor</span> (public name: string) {}
+}
+
+<span class="hljs-keyword">class</span> Frame <span class="hljs-keyword">implements</span> Iterator&lt;Component&gt; {
+
+  <span class="hljs-keyword">private</span> pointer = <span class="hljs-number">0</span>;
+
+  <span class="hljs-keyword">constructor</span>(public name: string, public components: Component[]) {}
+
+  <span class="hljs-keyword">public</span> next(): IteratorResult&lt;Component&gt; {
+    <span class="hljs-keyword">if</span> (<span class="hljs-keyword">this</span>.pointer &lt; <span class="hljs-keyword">this</span>.components.length) {
+      <span class="hljs-keyword">return</span> {
+        done: <span class="hljs-literal">false</span>,
+        value: <span class="hljs-keyword">this</span>.components[<span class="hljs-keyword">this</span>.pointer++]
+      }
+    } <span class="hljs-keyword">else</span> {
+      <span class="hljs-keyword">return</span> {
+        done: <span class="hljs-literal">true</span>
+      }
+    }
+  }
+
+}
+
+<span class="hljs-keyword">let</span> frame = <span class="hljs-keyword">new</span> Frame(<span class="hljs-string">"Door"</span>, [<span class="hljs-keyword">new</span> Component(<span class="hljs-string">"top"</span>), <span class="hljs-keyword">new</span> Component(<span class="hljs-string">"bottom"</span>), <span class="hljs-keyword">new</span> Component(<span class="hljs-string">"left"</span>), <span class="hljs-keyword">new</span> Component(<span class="hljs-string">"right"</span>)]);
+<span class="hljs-keyword">let</span> iteratorResult1 = frame.next(); <span class="hljs-comment">//{ done: false, value: Component { name: 'top' } }</span>
+<span class="hljs-keyword">let</span> iteratorResult2 = frame.next(); <span class="hljs-comment">//{ done: false, value: Component { name: 'bottom' } }</span>
+<span class="hljs-keyword">let</span> iteratorResult3 = frame.next(); <span class="hljs-comment">//{ done: false, value: Component { name: 'left' } }</span>
+<span class="hljs-keyword">let</span> iteratorResult4 = frame.next(); <span class="hljs-comment">//{ done: false, value: Component { name: 'right' } }</span>
+<span class="hljs-keyword">let</span> iteratorResult5 = frame.next(); <span class="hljs-comment">//{ done: true }</span>
+
+<span class="hljs-comment">//It is possible to access the value of iterator result via the value property:</span>
+<span class="hljs-keyword">let</span> component = iteratorResult1.value; <span class="hljs-comment">//Component { name: 'top' }</span>
+</code></pre>
+<p class="comments-section">Again. Iterator itself is not a TypeScript feature, this code could work without
+implementing Iterator and IteratorResult interfaces explicitly.
+However it is very helpful to use these common
+ES6 <a href="https://basarat.gitbooks.io/typescript/docs/types/interfaces.html">interfaces</a> for code consistency.<div class="comments-icon"><div class="marker">+</div></div></p>
+<p class="comments-section">Ok, Nice, but could be more helpful. ES6 defines the <em>iterable protocol</em>
+which includes [Symbol.iterator] <code>symbol</code> if Iterable interface implemented:<div class="comments-icon"><div class="marker">+</div></div></p>
+<pre><code class="lang-ts"><span class="hljs-comment">//...</span>
+<span class="hljs-keyword">class</span> Frame <span class="hljs-keyword">implements</span> Iterable&lt;Component&gt; {
+
+  <span class="hljs-keyword">constructor</span>(public name: string, public components: Component[]) {}
+
+  [Symbol.iterator]() {
+
+    <span class="hljs-keyword">let</span> pointer = <span class="hljs-number">0</span>;
+    <span class="hljs-keyword">let</span> components = <span class="hljs-keyword">this</span>.components;
+
+    <span class="hljs-keyword">return</span> {
+
+      next(): IteratorResult&lt;Component&gt; {
+        <span class="hljs-keyword">if</span> (pointer &lt; components.length) {
+          <span class="hljs-keyword">return</span> {
+            done: <span class="hljs-literal">false</span>,
+            value: components[pointer++]
+          }
+        } <span class="hljs-keyword">else</span> {
+          <span class="hljs-keyword">return</span> {
+            done: <span class="hljs-literal">true</span>,
+            value: <span class="hljs-literal">null</span>
+          }
+        }
+      }
+
+    }
+
+  }
+
+}
+
+<span class="hljs-keyword">let</span> frame = <span class="hljs-keyword">new</span> Frame(<span class="hljs-string">"Door"</span>, [<span class="hljs-keyword">new</span> Component(<span class="hljs-string">"top"</span>), <span class="hljs-keyword">new</span> Component(<span class="hljs-string">"bottom"</span>), <span class="hljs-keyword">new</span> Component(<span class="hljs-string">"left"</span>), <span class="hljs-keyword">new</span> Component(<span class="hljs-string">"right"</span>)]);
+<span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> cmp of frame) {
+  <span class="hljs-built_in">console</span>.log(cmp);
+}
+</code></pre>
+<p class="comments-section">Unfortunately <code>frame.next()</code> won't work with this pattern and it also looks
+a bit clunky. IterableIterator interface to the rescue!<div class="comments-icon"><div class="marker">+</div></div></p>
+<pre><code class="lang-ts"><span class="hljs-comment">//...</span>
+<span class="hljs-keyword">class</span> Frame <span class="hljs-keyword">implements</span> IterableIterator&lt;Component&gt; {
+
+  <span class="hljs-keyword">private</span> pointer = <span class="hljs-number">0</span>;
+
+  <span class="hljs-keyword">constructor</span>(public name: string, public components: Component[]) {}
+
+  <span class="hljs-keyword">public</span> next(): IteratorResult&lt;Component&gt; {
+    <span class="hljs-keyword">if</span> (<span class="hljs-keyword">this</span>.pointer &lt; <span class="hljs-keyword">this</span>.components.length) {
+      <span class="hljs-keyword">return</span> {
+        done: <span class="hljs-literal">false</span>,
+        value: <span class="hljs-keyword">this</span>.components[<span class="hljs-keyword">this</span>.pointer++]
+      }
+    } <span class="hljs-keyword">else</span> {
+      <span class="hljs-keyword">return</span> {
+        done: <span class="hljs-literal">true</span>,
+        value: <span class="hljs-literal">null</span>
+      }
+    }
+  }
+
+  [Symbol.iterator](): IterableIterator&lt;Component&gt; {
+    <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>;
+  }
+
+}
+<span class="hljs-comment">//...</span>
+</code></pre>
+<p class="comments-section">Both <code>frame.next()</code> and <code>for</code> cycle now work fine with IterableIterator interface.<div class="comments-icon"><div class="marker">+</div></div></p>
+<p class="comments-section">Iterator does not have to iterate a finite value.
+The typical example is a Fibonacci sequence:<div class="comments-icon"><div class="marker">+</div></div></p>
+<pre><code class="lang-ts"><span class="hljs-keyword">class</span> Fib <span class="hljs-keyword">implements</span> IterableIterator&lt;<span class="hljs-built_in">number</span>&gt; {
+
+  <span class="hljs-keyword">protected</span> fn1 = <span class="hljs-number">0</span>;
+  <span class="hljs-keyword">protected</span> fn2 = <span class="hljs-number">1</span>;
+
+  <span class="hljs-keyword">constructor</span>(protected maxValue?: number) {}
+
+  <span class="hljs-keyword">public</span> next(): IteratorResult&lt;<span class="hljs-built_in">number</span>&gt; {
+    <span class="hljs-keyword">var</span> current = <span class="hljs-keyword">this</span>.fn1;
+    <span class="hljs-keyword">this</span>.fn1 = <span class="hljs-keyword">this</span>.fn2;
+    <span class="hljs-keyword">this</span>.fn2 = current + <span class="hljs-keyword">this</span>.fn1;
+    <span class="hljs-keyword">if</span> (<span class="hljs-keyword">this</span>.maxValue &amp;&amp; current &lt;= <span class="hljs-keyword">this</span>.maxValue) {
+      <span class="hljs-keyword">return</span> {
+        done: <span class="hljs-literal">false</span>,
+        value: current
+      }
+    } <span class="hljs-keyword">return</span> {
+      done: <span class="hljs-literal">true</span>,
+      value: <span class="hljs-literal">null</span>
+    }
+
+  }
+
+  [Symbol.iterator](): IterableIterator&lt;<span class="hljs-built_in">number</span>&gt; {
+    <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>;
+  }
+
+}
+
+<span class="hljs-keyword">let</span> fib = <span class="hljs-keyword">new</span> Fib();
+
+fib.next() <span class="hljs-comment">//{ done: false, value: 0 }</span>
+fib.next() <span class="hljs-comment">//{ done: false, value: 1 }</span>
+fib.next() <span class="hljs-comment">//{ done: false, value: 1 }</span>
+fib.next() <span class="hljs-comment">//{ done: false, value: 2 }</span>
+fib.next() <span class="hljs-comment">//{ done: false, value: 3 }</span>
+fib.next() <span class="hljs-comment">//{ done: false, value: 5 }</span>
+
+<span class="hljs-keyword">let</span> fibMax50 = <span class="hljs-keyword">new</span> Fib(<span class="hljs-number">50</span>);
+<span class="hljs-built_in">console</span>.log(<span class="hljs-built_in">Array</span>.from(fibMax50)); <span class="hljs-comment">// [ 0, 1, 1, 2, 3, 5, 8, 13, 21, 34 ]</span>
+
+<span class="hljs-keyword">let</span> fibMax21 = <span class="hljs-keyword">new</span> Fib(<span class="hljs-number">21</span>);
+<span class="hljs-keyword">for</span>(<span class="hljs-keyword">let</span> num of fibMax21) {
+  <span class="hljs-built_in">console</span>.log(num); <span class="hljs-comment">//Prints fibonacci sequence 0 to 21</span>
+}
+</code></pre>
+<h4 id="building-code-with-iterators-for-es5-target">Building code with iterators for ES5 target</h4>
+<p class="comments-section">Code examples above require ES6 target, however it could work
+with ES5 target as well if target JS engine supports <code>Symbol.iterator</code>.
+This can be achieved by using ES6 lib with ES5 target
+(add es6.d.ts to your project) to make it compile.
+Compiled code should work in node 4+, Google Chrome and in some other browsers.<div class="comments-icon"><div class="marker">+</div></div></p>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class="search-results-count"></span> results matching "<span class="search-query"></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class="search-query"></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="https://basarat.gitbooks.io/typescript/docs/for...of.html" class="navigation navigation-prev " aria-label="Previous page: for...of">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="https://basarat.gitbooks.io/typescript/docs/template-strings.html" class="navigation navigation-next " aria-label="Next page: Template Strings" style="margin-right: 17px;">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script async="" src="./Iterators · TypeScript Deep Dive_files/analytics.js.download"></script><script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"Iterators","level":"1.4.9","depth":2,"next":{"title":"Template Strings","level":"1.4.10","depth":2,"path":"docs/template-strings.md","ref":"docs/template-strings.md","articles":[]},"previous":{"title":"for...of","level":"1.4.8","depth":2,"path":"docs/for...of.md","ref":"docs/for...of.md","articles":[]},"dir":"ltr"},"config":{"plugins":["edit-link","github","comment"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"github":{"url":"https://github.com/basarat/typescript-book/"},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"edit-link":{"label":"Edit This Page","base":"https://github.com/basarat/typescript-book/tree/master"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"comment":{"highlightCommented":true}},"github":"basarat/typescript-book","theme":"default","author":"Basarat Ali Syed","pdf":{"pageNumbers":true,"fontSize":16,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"TypeScript Deep Dive","language":"en","links":{"sidebar":{"TypeScript Deep Dive":"https://www.gitbook.com/book/basarat/typescript"},"gitbook":true},"gitbook":">=3.2.1","description":"The definitive guide to TypeScript. Dive into all the details that a JavaScript developer needs to know to be a great TypeScript developer"},"file":{"path":"docs/iterators.md","mtime":"2017-06-06T01:25:07.000Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-06-06T01:26:03.515Z"},"basePath":"..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="./Iterators · TypeScript Deep Dive_files/gitbook.js.download"></script>
+    <script src="./Iterators · TypeScript Deep Dive_files/theme.js.download"></script>
+    
+        
+        <script src="./Iterators · TypeScript Deep Dive_files/plugin.js.download"></script>
+        
+    
+        
+        <script src="./Iterators · TypeScript Deep Dive_files/plugin.js(1).download"></script>
+        
+    
+        
+        <script src="./Iterators · TypeScript Deep Dive_files/plugin.js(2).download"></script>
+        
+    
+        
+        <script src="./Iterators · TypeScript Deep Dive_files/search-engine.js.download"></script>
+        
+    
+        
+        <script src="./Iterators · TypeScript Deep Dive_files/search.js.download"></script>
+        
+    
+        
+        <script src="./Iterators · TypeScript Deep Dive_files/lunr.min.js.download"></script>
+        
+    
+        
+        <script src="./Iterators · TypeScript Deep Dive_files/search-lunr.js.download"></script>
+        
+    
+        
+        <script src="./Iterators · TypeScript Deep Dive_files/buttons.js.download"></script>
+        
+    
+        
+        <script src="./Iterators · TypeScript Deep Dive_files/fontsettings.js.download"></script>
+        
+    
+
+    
+<div><script style="display: none;" type="application/javascript">
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-57505611-7', 'auto', {name: 'microcdn'});
+  ga('microcdn.send', 'pageview');
+
+  var _cdn_prev_loc = window.location.pathname;
+  window.setInterval(function () {
+    if (window.location.pathname !== _cdn_prev_loc) {
+      _cdn_prev_loc = window.location.pathname;
+      ga('microcdn.send', 'pageview');
+    }
+  }, 100);
+
+</script></div>
+
+
+
+</body></html>
